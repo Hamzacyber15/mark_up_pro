@@ -1,0 +1,12 @@
+# Netlify configuration file for deploying MarkupPro (subproject level)
+
+[build]
+  # The build command to execute
+  command = "npm run build"
+  
+  # The directory that contains the deploy-ready static files
+  publish = ".next"
+
+# Automatically enable Netlify's Next.js Advanced Runtime
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
