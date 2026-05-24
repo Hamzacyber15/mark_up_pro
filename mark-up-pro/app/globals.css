@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-pink: #FF4E8E;
+  --color-brand-orange: #FF7E5F;
+  --color-brand-purple: #7C3AED;
+  --color-dark-bg: #0A0A0B;
+  --color-dark-card: #141416;
+  --color-dark-border: #262629;
+  
+  --font-outfit: var(--font-outfit), sans-serif;
+  --font-orbitron: var(--font-orbitron), sans-serif;
+
+  --background-image-brand-gradient: linear-gradient(135deg, #F17842 0%, #E96459 50%, #DC467A 100%);
+  --background-image-mesh-gradient: radial-gradient(at 0% 0%, hsla(24,87%,60%,0.05) 0, transparent 50%),
+                                    radial-gradient(at 50% 0%, hsla(355,78%,63%,0.05) 0, transparent 50%),
+                                    radial-gradient(at 100% 0%, hsla(337,70%,56%,0.05) 0, transparent 50%);
+}
+
+:root {
+  --background: #0A0A0B;
+  --foreground: #FFFFFF;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-outfit);
+  overflow-x: hidden;
+}
+
+.bg-brand-stats-gradient {
+  background: linear-gradient(to right, #F17842 0%, #E96459 50%, #DC467A 100%);
+}
+
+
+/* Custom Gradients */
+.text-brand-gradient {
+  display: inline-block;
+  background: linear-gradient(135deg, #F17842 0%, #E96459 50%, #DC467A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+
+@keyframes gradient-shift {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.glass-card {
+  background: rgba(20, 20, 22, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glow-pink {
+  box-shadow: 0 0 20px rgba(220, 70, 122, 0.2);
+}
+
+@layer utilities {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-6 md:px-12;
+  }
+  
+  .font-orbitron {
+    font-family: var(--font-orbitron);
+  }
+  
+  .font-outfit {
+    font-family: var(--font-outfit);
+  }
+
+  .btn-brand {
+    @apply relative overflow-hidden bg-brand-gradient text-white text-xs font-bold uppercase tracking-widest rounded-xl transition-all duration-300 hover:scale-[1.02] hover:opacity-95 shadow-[0_10px_25px_rgba(220,70,122,0.25)] flex items-center justify-center gap-2;
+  }
+
+  .btn-brand::after {
+    content: '';
+    @apply absolute inset-0 bg-white/20 translate-x-[-100%] transition-transform duration-500 skew-x-[-20deg];
+  }
+
+  .btn-brand:hover::after {
+    @apply translate-x-[100%];
+  }
+}
